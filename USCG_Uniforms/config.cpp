@@ -452,6 +452,9 @@ class cfgWeapons
 	class U_B_Wetsuit;
 	class H_HelmetHBK_headset_F;
 	class H_HelmetHBK_F;
+	class V_SmershVest_01_radio_F;
+	class V_CarrierRigKBT_01_light_Olive_F;
+	class V_CarrierRigKBT_01_heavy_Olive_F;
 	
 	#include "vest_floaty\cfgVest.hpp"
 	
@@ -489,6 +492,42 @@ class cfgWeapons
 		displayName = "(USCG) Combat Vest";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\platecarrier_uscg_combat_co.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};
+	class USCG_Harness : V_SmershVest_01_radio_F
+	{
+		author = "Silence";
+		displayName = "(USCG) Harness";
+		hiddenSelections[] = {"camo", "camo2", "radio2_hide"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\smersh_uscg_co.paa", "Smersh_miscellaneous_uscg_CO.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};
+	class USCG_Vest_PlateCarrier : V_CarrierRigKBT_01_light_Olive_F
+	{
+		author = "Silence";
+		displayName = "(USCG) Combat Plate Carrier";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\CarrierRigKBT_01_USCG_CO.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};
+	class USCG_Vest_PlateCarrier_Medic : V_CarrierRigKBT_01_light_Olive_F
+	{
+		author = "Silence";
+		displayName = "(USCG) Combat Medic Plate Carrier";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\CarrierRigKBT_01_USCG_MEDIC_CO.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};
+	class USCG_Vest_PlateCarrier_OHLAWDHECOMIN : V_CarrierRigKBT_01_heavy_Olive_F
+	{
+		author = "Silence";
+		displayName = "(USCG) Combat Vest Heavy";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\CarrierRigKBT_01_USCG_CO.paa"};
 		picture = "\USCG\USCG_Image.paa";
 		icon = "\USCG\USCG_Image.paa";
 	};
