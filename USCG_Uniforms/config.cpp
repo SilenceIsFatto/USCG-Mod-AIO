@@ -375,6 +375,103 @@ class CfgVehicles
 			"USCG_Uniforms\Uniform\uscg_combat_clothing_co.paa",
 		};
 	};
+	class USCG_Unit_Combat_Officer_BlkUniform: B_Soldier_03_f
+	{
+		side=1;
+		faction="USCG";
+		backpack="USCG_Backpack_Combat_Pack";
+		vehicleclass="USCG_Combat";
+		author="Akers, Remastered by Silence";
+		_generalMacro="USCG_Unit_Combat_Officer_BlkUniform";
+		scope=2;
+		displayName="(USCG) Military Sergeant";
+		icon="iconManLeader";
+		model = "\A3\characters_f_beta\INDEP\ia_soldier_02.p3d";
+		weapons[]=
+		{
+			"hgun_ACPC2_F",
+			"Throw",
+			"Put"
+		};
+		respawnWeapons[]=
+		{
+			"hgun_ACPC2_F",
+			"Throw",
+			"Put"
+		};
+		magazines[]=
+		{
+			"9Rnd_45ACP_Mag",
+			"9Rnd_45ACP_Mag",
+			"9Rnd_45ACP_Mag",
+			"Chemlight_red",
+			"Chemlight_red",
+			"Chemlight_red",
+			"Chemlight_red"
+		};
+		respawnMagazines[]=
+		{
+			"9Rnd_45ACP_Mag",
+			"9Rnd_45ACP_Mag",
+			"9Rnd_45ACP_Mag",
+			"Chemlight_red",
+			"Chemlight_red",
+			"Chemlight_red",
+			"Chemlight_red"
+		};
+		Items[] =
+		{
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"Medikit"
+		};
+		RespawnItems[] =
+		{
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"FirstAidKit",
+			"Medikit"
+		};
+		linkedItems[]=
+		{
+			"H_Beret_02",
+			"USCG_Vest_PlateCarrier",
+			"G_Aviator",
+			"ItemMap",
+			"ItemCompass",
+			"ItemWatch",
+			"ItemRadio"
+		};
+		respawnLinkedItems[]=
+		{
+			"H_Beret_02",
+			"USCG_Vest_PlateCarrier",
+			"G_Aviator",
+			"ItemMap",
+			"ItemCompass",
+			"ItemWatch",
+			"ItemRadio"
+		};
+		uniformClass="USCG_Uniform_Combat_Black";
+		camouflage=1.6;
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"USCG_Uniforms\Uniform\uscg_combat_clothing_blk_co.paa",
+		};
+	};
 	
 	class B_AssaultPack_Kerry;
 	
@@ -455,8 +552,28 @@ class cfgWeapons
 	class V_SmershVest_01_radio_F;
 	class V_CarrierRigKBT_01_light_Olive_F;
 	class V_CarrierRigKBT_01_heavy_Olive_F;
+	class H_Cap_blk;
 	
 	#include "vest_floaty\cfgVest.hpp"
+	
+	class USCG_Headgear_Cap : H_Cap_blk
+	{
+		author = "Silence";
+		displayName = "(USCG) Cap";
+		hiddenSelections[] = {"Camo"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Headgear\uscg_headgear_cap_co.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};
+	class USCG_Headgear_Cap_Blk : H_Cap_blk
+	{
+		author = "Silence";
+		displayName = "(USCG) Cap Black";
+		hiddenSelections[] = {"Camo"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Headgear\uscg_headgear_blk_cap_co.paa"};
+		picture = "\USCG\USCG_Image.paa";
+		icon = "\USCG\USCG_Image.paa";
+	};	
 	
 	class USCG_Headgear_Combat : H_HelmetHBK_headset_F
 	{
@@ -499,8 +616,8 @@ class cfgWeapons
 	{
 		author = "Silence";
 		displayName = "(USCG) Harness";
-		hiddenSelections[] = {"camo", "camo2", "radio2_hide"};
-		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\smersh_uscg_co.paa", "Smersh_miscellaneous_uscg_CO.paa"};
+		hiddenSelections[] = {"camo", "camo2", "Radio2_hide"};
+		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\smersh_uscg_co.paa", "USCG_Uniforms\Vest\Smersh_miscellaneous_uscg_CO.paa"};
 		picture = "\USCG\USCG_Image.paa";
 		icon = "\USCG\USCG_Image.paa";
 	};
@@ -525,7 +642,7 @@ class cfgWeapons
 	class USCG_Vest_PlateCarrier_OHLAWDHECOMIN : V_CarrierRigKBT_01_heavy_Olive_F
 	{
 		author = "Silence";
-		displayName = "(USCG) Combat Vest Heavy";
+		displayName = "(USCG) Combat Plate Carrier Heavy";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"USCG_Uniforms\Vest\CarrierRigKBT_01_USCG_CO.paa"};
 		picture = "\USCG\USCG_Image.paa";
@@ -558,6 +675,19 @@ class cfgWeapons
             mass = 50; 
         };    
     };
+    class USCG_Uniform_Combat_Black: Uniform_Base 
+    { 
+        icon = "\USCG\USCG_Image.paa";
+        scope = 2; 
+        displayName = "(USCG) Combat Uniform Black"; 
+        picture = "\USCG\USCG_Image.paa"; 
+        model = "\A3\characters_f_beta\INDEP\ia_soldier_02.p3d"; 
+        class ItemInfo : UniformItem { 
+            uniformClass = "USCG_Unit_Combat_Officer_BlkUniform"; 
+            containerClass = "Supply50"; 
+            mass = 50; 
+        };    
+    };
     class USCG_Uniform_Swimmer: U_B_Wetsuit 
     {
         icon = "\USCG\USCG_Image.paa";
@@ -571,24 +701,5 @@ class cfgWeapons
             containerClass = "Supply80"; 
             mass = 60; 
         };    
-    };
-    class USCG_Headgear_Cap: H_CapB
-    {
-        icon = "\USCG\USCG_Image.paa";
-        displayName = "(USCG) Cap";
-        picture = "\USCG\USCG_Image.paa";
-        model = "\A3\Characters_F\Common\capb.p3d";
-        hiddenSelections[] = {"Camo"};
-        hiddenSelectionsTextures[] = {"USCG_Uniforms\data\uscg_headgear_cap_co.paa"};
-        class ItemInfo: ItemInfo
-        {
-            mass = 20;
-            allowedSlots[] = {901,605};
-            uniformModel = "\A3\Characters_F\Common\capb";
-            modelSides[] = {3,1};
-            hiddenSelections[] = {"Camo"};
-            armor = "0*0";
-            passThrough = 0.0;
-        };
     };
 }; 
