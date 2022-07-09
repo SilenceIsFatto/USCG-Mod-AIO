@@ -56,11 +56,11 @@ mst_fnc_handleRopeDetach = {
 mst_fnc_handleEject = {
 	player addEventHandler ["GetOutMan", { 
 		params ["_unit", "_role", "_vehicle", "_turret"];
-		ply = _unit;
-		[ply, "GetOutHeli_Light_01bench"] remoteExec ["switchMove"];
-		ply removeEventHandler ["GetOutMan", _thisEventHandler];
-		[] spawn {sleep 1.2,
-			[ply, "AswmPercMstpSnonWnonDnon"] remoteExec ["switchMove"];
-		}; 
+		[_unit, "GetOutHeli_Light_01bench"] remoteExec ["switchMove"];
+		_unit removeEventHandler ["GetOutMan", _thisEventHandler];
+		[_unit] spawn {sleep 1.2,
+			params ["_unit"];
+			[_unit, "AswmPercMstpSnonWnonDnon"] remoteExec ["switchMove"];
+		};
 	}];
 };

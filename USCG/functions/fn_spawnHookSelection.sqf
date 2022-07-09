@@ -1,5 +1,3 @@
-// Don't mind the confusing name, the functions for spawning actual hooks are in fn_helicopterInit.sqf.
-
 _index = lbCurSel 2200;
 _hook = lbData [2200, _index];
 

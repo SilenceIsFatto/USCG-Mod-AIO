@@ -11,13 +11,6 @@ _fnc_makeCarrayble = {
 };
 ["USCG_Stretcher", "init", _fnc_makeCarrayble, true, [], true] call CBA_fnc_addClassEventHandler; 
 
-_allowedHooks =
-[
-	"USCG_RescueBasket", 
-	"USCG_Stretcher",
-	"vtx_hook"
-];
-
 mst_fnc_spawnHookSelectionMenu = {
 	createDialog "uscg_hookSelection";
 	[] call USCG_mod_fnc_handleDialog;
