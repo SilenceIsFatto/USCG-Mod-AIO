@@ -56,6 +56,15 @@ class cfgVehicles
 		{
 			class interaction 
 			{
+				class transferToCabin
+				{
+					condition = "";
+					positionType = "coordinates";
+					position[] = {0.0204315,4.4066,-1.16562};
+					label = "Move Into Cabin";
+					radius = 0.1;
+					buttonDown = "moveOut player; player moveInCargo [vxf_vehicle, 1, true]";
+				};
 				class readDataCoPilot
 				{
 					clickSound = "vxf_Switch_Sound";
@@ -68,7 +77,7 @@ class cfgVehicles
 				};
 				class transferBasketHelicopter
 				{
-					condition = "ropeLength (ropes vxf_vehicle select 0) <= 3";
+					condition = "hasDeployedHook";
 					positionType = "coordinates";
 					position[] = {0.0136251,4.71973,-1.14};
 					label = "Move Hoist Crew - Helicopter";
@@ -121,6 +130,26 @@ class cfgVehicles
 		{
 			class interaction
 			{
+				class openSideDoorPilot
+				{
+					clickSound = "vxf_Switch_Sound";
+					condition = "vxf_vehicle animationPhase ""Door_RB"" < 0.1";
+					positionType = "coordinates";
+					position[] = {0.592812,4.99083,-1.05436};
+					label = "Open Side Door";
+					radius = 0.2;
+					buttonDown = "[vxf_vehicle] call uscg_jayhawk_fnc_sideDoor";
+				};
+				class closeSideDoorPilot
+				{
+					clickSound = "vxf_Switch_Sound";
+					condition = "vxf_vehicle animationPhase ""Door_RB"" > 0.1";
+					positionType = "coordinates";
+					position[] = {0.592812,4.99083,-1.05436};
+					label = "Close Side Door";
+					radius = 0.2;
+					buttonDown = "[vxf_vehicle] call uscg_jayhawk_fnc_sideDoor";
+				};
 				class transferBasketHelicopter
 				{
 					condition = "hasDeployedHook";
@@ -195,6 +224,33 @@ class cfgVehicles
 		{
 			class interaction
 			{
+				class transferToCockpit
+				{
+					condition = "isNull (vxf_vehicle turretUnit [0])";
+					positionType = "coordinates";
+					position[] = {0.0204315,4.4066,-1.16562};
+					label = "Move Into Cockpit";
+					radius = 0.1;
+					buttonDown = "player setPos getPos vxf_vehicle, player moveInTurret [vxf_vehicle, [0]]";
+				};
+				class transferToCargo
+				{
+					condition = "([vxf_vehicle] call uscg_jayhawk_fnc_canCloseDoor == false) && vxf_vehicle doorPhase ""door_RB"" > 0.5";
+					positionType = "coordinates";
+					position[] = {0.616639,1.20687,-1.36537};
+					label = "Move Into Passenger Seat";
+					radius = 0.1;
+					buttonDown = "player setPos getPos vxf_vehicle, player moveInCargo [vxf_vehicle, 1, true]";
+				};
+				class transferToGunner
+				{
+					condition = "([vxf_vehicle] call uscg_jayhawk_fnc_canCloseDoor == true) && vxf_vehicle doorPhase ""door_RB"" > 0.5";
+					positionType = "coordinates";
+					position[] = {0.884644,2.19265,-1.81217};
+					label = "Move Into Door Seat";
+					radius = 0.1;
+					buttonDown = "player setPos getPos vxf_vehicle, player moveInTurret [vxf_vehicle, [1]]";
+				};
 				class deployStretcher
 				{
 					condition = "([vxf_vehicle] call uscg_jayhawkrescue_fnc_hasStretcher == true) && {!hasDeployedHook}";

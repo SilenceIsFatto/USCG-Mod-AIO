@@ -625,7 +625,7 @@ class CfgVehicles
 			"fold", 0
 		};
 		*/
-		displayname="USCG MH-60 Jayhawk (Empty)";
+		displayname="USCG MH-60 Jayhawk (No Rescue Equipment)";
 		maxSpeed=310;
 		slingLoadMaxCargoMass=4284;
 		mainRotorSpeed=1.2;
@@ -709,6 +709,10 @@ class CfgFunctions
                 file = "USCG_Jayhawk\jayhawk\functions\fn_closeDoor.sqf";
             };
 			// side door
+            class canCloseDoor
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_canCloseDoor.sqf";
+            };
             class sideDoor
             {
                 file = "USCG_Jayhawk\jayhawk\functions\fn_sideDoor.sqf";

@@ -19,10 +19,10 @@ stretcher_hook setPos (vehicle player modelToWorld [3,2,-1]);
 stretcher_hook addItemCargoGlobal ["firstAidKit", 10];
 stretcher_hook addItemCargoGlobal ["Medikit", 10];
 
-myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo1", 1, [], ["RopeEnd", [0,0,0]]];
-myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo2", 1, [], ["RopeEnd", [0,0,0]]];
-myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo3", 1, [], ["RopeEnd", [0,0,0]]];
-myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo4", 1, [], ["RopeEnd", [0,0,0]]];
+myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo1", 1, []];
+myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo2", 1, []];
+myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo3", 1, []];
+myRope = ropeCreate [hook, [0, 0, 0.05], stretcher_hook, "SlingLoadCargo4", 1, []];
 
 hasDeployedStretcher = true;
 publicVariable "hasDeployedStretcher";
