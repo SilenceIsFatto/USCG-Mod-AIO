@@ -32,4 +32,10 @@ stretcherUnit moveInAny stretcher_hook;
 stretcherUnit switchMove "jayhawk_anim_stretcher";
 [vxf_vehicle, [6, true]] remoteExec ["lockCargo"];
 
+stretcher_hook addEventHandler ["GetIn", {
+	params ["_vehicle", "_role", "_unit", "_turret"];
+	stretcherUnit = _unit;
+	hint str stretcherUnit;
+}];
+
 [stretcher_hook] call uscg_fnc_handleRopeDetach;
