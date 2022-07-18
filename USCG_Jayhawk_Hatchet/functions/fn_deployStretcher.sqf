@@ -28,4 +28,8 @@ hasDeployedStretcher = true;
 publicVariable "hasDeployedStretcher";
 publicVariable "stretcher_hook";
 
-[vehicle player] call mst_fnc_handleRopeDetach;
+stretcherUnit moveInAny stretcher_hook;
+stretcherUnit switchMove "jayhawk_anim_stretcher";
+[vxf_vehicle, [6, true]] remoteExec ["lockCargo"];
+
+[stretcher_hook] call uscg_fnc_handleRopeDetach;

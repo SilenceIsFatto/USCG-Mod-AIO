@@ -28,4 +28,4 @@ hasDeployedBasket = true;
 publicVariable "hasDeployedBasket";
 publicVariable "basket_hook";
 
-[vehicle player] call mst_fnc_handleRopeDetach;
+[basket_hook] call uscg_fnc_handleRopeDetach;

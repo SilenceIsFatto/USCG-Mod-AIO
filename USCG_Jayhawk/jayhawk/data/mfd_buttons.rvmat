@@ -8,7 +8,7 @@ PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-	texture="";
+	texture="USCG_Jayhawk\jayhawk\data\mfd_buttons_nohq.paa";
 	uvSource="tex";
 	class uvTransform
 	{
@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture = "USCG_Jayhawk\jayhawk\data\sh-60_12_c_as.paa";
+    texture = "USCG_Jayhawk\jayhawk\data\mfd_buttons_as.paa";
     uvSource = "tex";
     class uvTransform
     {
@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-	texture="USCG_Jayhawk\jayhawk\data\sh-60_12_c_smdi.paa";
+	texture="USCG_Jayhawk\jayhawk\data\mfd_buttons_smdi.paa";
 	uvSource="tex";
 	class uvTransform
 	{

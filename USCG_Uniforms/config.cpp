@@ -7,7 +7,8 @@ class CfgPatches
 			"USCG_Unit_Rescue_Medic",
 			"USCG_Unit_Rescue_Pilot",
 			"USCG_Unit_Rescue_Swimmer",
-			"USCG_Unit_Combat_Officer"
+			"USCG_Unit_Combat_Officer",
+			"USCG_Unit_Combat_Officer_BlkUniform"
 		};
 		weapons[]={};
 		requiredVersion=0.1;

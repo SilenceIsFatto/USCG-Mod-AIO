@@ -13,11 +13,15 @@ params ["_vehicle"]; // no real point to this
 
 [hook] call uscg_mod_fnc_deleteHook;
 
-if ([vxf_vehicle] call uscg_jayhawk_fnc_canCloseDoor) then {
-	[vxf_vehicle, ["Door_RB", 0]] remoteExec ["animateDoor"];
-	for "_i" from 1 to 6 do {
-		[vxf_vehicle, [_i, true]] remoteExec ["lockCargo"];
+if (vxf_vehicle getVariable "jayhawkHasStretcher") then {
+	[vxf_vehicle, ["stretcher", 0]] remoteExec ["animate"];
+	[vxf_vehicle, [6, false]] remoteExec ["lockCargo"];
+	if !(isNil "stretcherUnit") then {
+		(crew stretcher_hook) moveInCargo [vxf_vehicle, 6];
+		stretcherUnit switchMove "jayhawk_anim_stretcher";
 	};
 };
-[vxf_vehicle, ["stretcher", 0]] remoteExec ["animate"];
-[vxf_vehicle, ["basket", 0]] remoteExec ["animate"];
+
+if (vxf_vehicle getVariable "jayhawkHasBasket") then {
+	[vxf_vehicle, ["basket", 0]] remoteExec ["animate"];
+};

@@ -27,7 +27,7 @@ addMissionEventHandler ["GroupCreated", {
 
 */
 
-mst_fnc_handleRopeDetach = {
+uscg_fnc_handleRopeDetach = {
 	params ["_heli"];
 	_heli addEventHandler ["RopeBreak",{
 		params ["_object1", "_rope", "_object2"];
@@ -39,7 +39,7 @@ mst_fnc_handleRopeDetach = {
 		publicVariable "hasDeployedHook";
 		hookDeployed = false;
 		publicVariable "hookDeployed";
-		_heli animateSource ['hoist_hook_hide', 0]; // unhide hook
+		_heli animateSource ['hook', 0]; // unhide hook
 		if (hasDeployedStretcher) then {
 			deleteVehicle stretcher_hook;
 			hasDeployedStretcher = false;

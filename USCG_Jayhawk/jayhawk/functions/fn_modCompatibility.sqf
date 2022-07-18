@@ -16,6 +16,6 @@ if ( isClass (configFile >> "cfgPatches" >> "vtx_main") ) then {
 	hasHatchet = true;
 };
 
-if ( isClass (configFile >> "cfgPatches" >> "ace_medical") ) then {
+if ( isClass (configFile >> "cfgPatches" >> "ace_main") ) then {
 	hasACE = true;
 };

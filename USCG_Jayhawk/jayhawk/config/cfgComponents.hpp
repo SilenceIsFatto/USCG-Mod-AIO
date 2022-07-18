@@ -6,10 +6,10 @@
 		cargoPreciseGetInOut[]={0,2,2,2,2,1};
 		cargoAction[]=
 		{
-			"passenger_generic01_foldhands",
-			"passenger_apc_generic02",
-			"passenger_apc_narrow_generic01",
 			"passenger_apc_generic04",
+			"passenger_apc_generic02",
+			"passenger_apc_generic03",
+			"passenger_apc_narrow_generic01",
 			"passenger_generic01_foldhands",
 			"jayhawk_stretcher",
 		};

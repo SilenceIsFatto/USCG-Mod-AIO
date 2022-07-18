@@ -18,8 +18,8 @@ _rope = ropeCreate [vehicle player, "rope", hook, [0,0,0.2], 3];
 
 hasDeployedHook = true;  
 publicVariable "hasDeployedHook";  
-vehicle player animateSource ['ems', 1]; 
-[vehicle player] call mst_fnc_handleRopeDetach;  
+vehicle player animateSource ['hook', 1]; 
+[vehicle player] call uscg_fnc_handleRopeDetach;  
 
 hookDeployed = true;  
 publicVariable "hookDeployed"; 

@@ -16,6 +16,47 @@ class CfgPatches
 	};
 };
 
+class CfgFunctions
+{
+    class USCG_Jayhawk
+    {
+        class functions
+        {
+			// Open
+            class openDoor
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_openDoor.sqf";
+            };
+			// Close
+            class closeDoor
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_closeDoor.sqf";
+            };
+			// Can
+            class canCloseDoor
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_canCloseDoor.sqf";
+            };
+			// Side
+            class sideDoor
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_sideDoor.sqf";
+            };
+			// Jayhawk
+            class jayhawkInit
+            {
+                file = "USCG_Jayhawk\jayhawk\functions\fn_jayhawkInit.sqf";
+            };
+			// Mod
+            class modCompatibility
+            {
+				postInit = 1;
+                file = "USCG_Jayhawk\jayhawk\functions\fn_modCompatibility.sqf";
+            };
+        };
+    };
+};
+
 class CfgAnimationSourceSounds
 {
 	class Jayhawk_OpenClose
@@ -580,10 +621,15 @@ class CfgVehicles
 	};
 	class USCG_Jayhawk: Helicopter_Medium_Base
 	{
+		//class Attributes;
 		class EventHandlers : EventHandlers
 		{
-			init = "_vehicle = _this select 0; [_vehicle, true, true, false] call uscg_jayhawk_fnc_jayhawkInit ";
+			init = "[(_this select 0), true, true, false] call uscg_jayhawk_fnc_jayhawkInit";
 		};
+		ace_fastroping_enabled = 1;
+		ace_fastroping_onCut = "uscg_jayhawk_fnc_sideDoor";
+		ace_fastroping_onPrepare = "uscg_jayhawk_fnc_sideDoor";
+		ace_fastroping_ropeOrigins[] = {"rope"};
 		author = "USCG AIO Dev Team";
 		displayname="USCG MH-60 Jayhawk";
 		model="\USCG_Jayhawk\Jayhawk\USCG_Jayhawk.p3d";
@@ -603,6 +649,12 @@ class CfgVehicles
 			"fold", 0
 		};
 		*/
+		driverCompartments="Compartment2";
+		cargoCompartments[]=
+		{
+			"Compartment1"
+		};
+		#include "jayhawk\config\cfg3denAttributes.hpp"
 		#include "jayhawk\config\cfgTextureSources.hpp"
 		//#include "jayhawk\config\cfgAnimationSources.hpp"
 		#include "jayhawk\config\cfgUserActions.hpp"
@@ -615,7 +667,7 @@ class CfgVehicles
 	{
 		class EventHandlers : EventHandlers
 		{
-			init = "_vehicle = _this select 0; [_vehicle, false, false, false] call uscg_jayhawk_fnc_jayhawkInit ";
+			init = "[(_this select 0), false, false, false] call uscg_jayhawk_fnc_jayhawkInit";
 		};
 		/*
 		animationList[]=
@@ -625,7 +677,7 @@ class CfgVehicles
 			"fold", 0
 		};
 		*/
-		displayname="USCG MH-60 Jayhawk (No Rescue Equipment)";
+		displayname="USCG MH-60 Jayhawk (No Equipment)";
 		maxSpeed=310;
 		slingLoadMaxCargoMass=4284;
 		mainRotorSpeed=1.2;
@@ -672,6 +724,10 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		
 		class jayhawk_anim_stretcher: Crew 
 		{
+			HeadBobUndef = 0;
+			head = "empty";
+			headNo[] = {};
+			aimingNo[] = {};
 			file = "USCG_Jayhawk\jayhawk\anim\anim_stretcher.rtm";
 			speed = -1e+010;
 			looped = "true";
@@ -684,50 +740,11 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			weaponIK = 0;
 			rightHandIKCurve[] = {0};
 			leftHandIKCurve[] = {0};
-            canReload = 0;				
+            canReload = 0;
 		};
 		class jayhawk_stretcher: Crew 
 		{
 			file = "USCG_Jayhawk\jayhawk\anim\anim_stretcher.rtm";
 		};				
 	};
-};
-
-class CfgFunctions
-{
-    class USCG_Jayhawk
-    {
-        class functions
-        {
-			// pilot doors
-            class openDoor
-            {
-                file = "USCG_Jayhawk\jayhawk\functions\fn_openDoor.sqf";
-            };
-            class closeDoor
-            {
-                file = "USCG_Jayhawk\jayhawk\functions\fn_closeDoor.sqf";
-            };
-			// side door
-            class canCloseDoor
-            {
-                file = "USCG_Jayhawk\jayhawk\functions\fn_canCloseDoor.sqf";
-            };
-            class sideDoor
-            {
-                file = "USCG_Jayhawk\jayhawk\functions\fn_sideDoor.sqf";
-            };
-			// jayhawk initialisation
-            class jayhawkInit
-            {
-                file = "USCG_Jayhawk\jayhawk\functions\fn_jayhawkInit.sqf";
-            };
-			// mod compatibility
-            class modCompatibility
-            {
-				postInit = 1;
-                file = "USCG_Jayhawk\jayhawk\functions\fn_modCompatibility.sqf";
-            };
-        };
-    };
 };

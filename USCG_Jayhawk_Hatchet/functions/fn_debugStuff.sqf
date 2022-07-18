@@ -28,17 +28,65 @@ hint str positions;
 
 canDraw = true;
 
-htf_helperID = addMissionEventHandler ["Draw3D",{
-	if (vehicle player != player && canDraw) then {
-		{
-			_name = (names select _forEachIndex);
-			drawIcon3D [
-			  "a3\ui_f\data\Map\Markers\Military\dot_ca.paa",
-			  [0,1,0,1],
-			  vehicle player modelToWorldVisual (positions select _forEachIndex),
-			  2.5,2.5,0,
-			  _name
-			];
-		} forEach positions;
+switch (_vxf) do 
+{
+	case "vxf_driver" : 
+	{
+		_drawIcon_Pilot = addMissionEventHandler ["Draw3D",{
+			if (vehicle player != player && canDraw) then {
+				{
+					_name = (names select _forEachIndex);
+					if ("Door" in _name) then {} else {
+						drawIcon3D [
+						  "a3\ui_f\data\Map\Markers\Military\dot_ca.paa",
+						  [0,1,0,1],
+						  vehicle player modelToWorldVisual (positions select _forEachIndex),
+						  2.5,2.5,0,
+						  _name
+						];
+					};
+				} forEach positions;
+			};
+		}];
 	};
-}];
+	
+	case "vxf_copilot" : 
+	{
+		_drawIcon_CoPilot = addMissionEventHandler ["Draw3D",{
+			if (vehicle player != player && canDraw) then {
+				{
+					_name = (names select _forEachIndex);
+					if ("Door" in _name) then {} else {
+						drawIcon3D [
+						  "a3\ui_f\data\Map\Markers\Military\dot_ca.paa",
+						  [1,0,0,1],
+						  vehicle player modelToWorldVisual (positions select _forEachIndex),
+						  2.5,2.5,0,
+						  _name
+						];
+					};
+				} forEach positions;
+			};
+		}];
+	};
+	
+	case "vxf_cargo":
+	{
+		_drawIcon_Cargo = addMissionEventHandler ["Draw3D",{
+			if (vehicle player != player && canDraw) then {
+				{
+					_name = (names select _forEachIndex);
+					if ("Side" in _name) then {} else {
+						drawIcon3D [
+						  "a3\ui_f\data\Map\Markers\Military\dot_ca.paa",
+						  [0,0,1,1],
+						  vehicle player modelToWorldVisual (positions select _forEachIndex),
+						  2.5,2.5,0,
+						  _name
+						];
+					};
+				} forEach positions;
+			};
+		}];
+	};
+};

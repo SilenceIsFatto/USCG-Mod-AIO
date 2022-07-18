@@ -13,8 +13,8 @@ params ["_vehicle"];
 [_vehicle] spawn {
 	params ["_vehicle"];
 	{
-		_index = (vehicle _x) unitTurret _x;
-		if (_index select 0 == 1) then {
+		_index = _vehicle getCargoIndex _x;
+		if (_index == 0) then {
 			//hint "Can Not Close";	
 			result = false;
 		} else {
@@ -22,7 +22,7 @@ params ["_vehicle"];
 			result = true;
 		};
 	} forEach crew _vehicle;
-	sleep 0.1;
+	uiSleep 0.1;
 };
 
 result

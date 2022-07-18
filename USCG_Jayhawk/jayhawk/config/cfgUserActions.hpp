@@ -12,7 +12,7 @@
 				onlyForPlayer = 1;
 				shortcut = "";
 				condition = "this doorPhase ""door_RB"" < 0.5 && !(this getCargoIndex player == -1) && !(hasHatchet)"; // only show if the door is closed and player isn't a pilot, and doesn't have hatchet loaded
-				statement = "[this] call uscg_jayhawk_fnc_sideDoor";
+				statement = "[this, true] call uscg_jayhawk_fnc_sideDoor";
 			};
 			class OpenCargoDoorOutside
 			{
@@ -26,7 +26,7 @@
 				onlyForPlayer = 1;
 				shortcut = "";
 				condition = "this doorPhase ""door_RB"" < 0.5"; 
-				statement = "[this] call uscg_jayhawk_fnc_sideDoor";
+				statement = "[this, true] call uscg_jayhawk_fnc_sideDoor";
 			};
 			class CloseCargoDoor
 			{
@@ -40,7 +40,7 @@
 				onlyForPlayer = 1;
 				shortcut = "";
 				condition = "this doorPhase ""door_RB"" > 0.5 && !(this getCargoIndex player == -1) && !(hasHatchet)";
-				statement = "[this] call uscg_jayhawk_fnc_sideDoor";
+				statement = "[this, false] call uscg_jayhawk_fnc_sideDoor";
 			};
 			class CloseCargoDoorOutside
 			{
@@ -54,7 +54,7 @@
 				onlyForPlayer = 1;
 				shortcut = "";
 				condition = "this doorPhase ""door_RB"" > 0.5";
-				statement = "[this] call uscg_jayhawk_fnc_sideDoor";
+				statement = "[this, false] call uscg_jayhawk_fnc_sideDoor";
 			};
 			class ClosePilotDoor
 			{

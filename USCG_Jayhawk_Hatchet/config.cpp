@@ -15,6 +15,7 @@ class CfgFunctions
 	{
 		class functions
 		{
+			// Deploy
 			class deployHook
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_deployHook.sqf";
@@ -27,14 +28,17 @@ class CfgFunctions
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_deployBasket.sqf";
 			};
+			// Debug
 			class debugStuff
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_debugStuff.sqf";
 			};
+			// Retrieve
 			class retrieveHookAttachment
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_retrieveHookAttachment.sqf";
 			};
+			// Checks
 			class hasBasket
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_hasBasket.sqf";
@@ -43,9 +47,16 @@ class CfgFunctions
 			{
 				file="\USCG_Jayhawk_Hatchet\functions\fn_hasStretcher.sqf";
 			};
+			// Move
+			class moveToCabin
+			{
+				file="\USCG_Jayhawk_Hatchet\functions\fn_moveToCabin.sqf";
+			};
 		};
 	};
 };
+
+#include "cfgUserActions.hpp"
 
 class cfgVehicles 
 {
@@ -56,6 +67,8 @@ class cfgVehicles
 		{
 			class interaction 
 			{
+				/*
+				*/
 				class transferToCabin
 				{
 					condition = "";
@@ -63,14 +76,23 @@ class cfgVehicles
 					position[] = {0.0204315,4.4066,-1.16562};
 					label = "Move Into Cabin";
 					radius = 0.1;
-					buttonDown = "moveOut player; player moveInCargo [vxf_vehicle, 1, true]";
+					buttonDown = "player action ['moveToCargo', _vehicle, 1]";
+				};
+				class setLengthCoPilot
+				{
+					condition = "hasDeployedHook";
+					positionType = "coordinates";
+					position[] = {-0.188208,5.01798,-1.09034};
+					label = "Set Rope Length";
+					radius = 0.2;
+					buttonDown = " createDialog 'uscg_RopeMeter' ";
 				};
 				class readDataCoPilot
 				{
 					clickSound = "vxf_Switch_Sound";
 					condition = "hasDeployedHook";
 					positionType = "coordinates";
-					position[] = {-0.0120684,5.23913,-1.05607};
+					position[] = {-0.154235,5.12919,-1.09263};
 					label = "Read Hoist Data";
 					radius = 0.2;
 					buttonDown = "[player] call uscg_mod_fnc_getDataReadings";
@@ -79,9 +101,9 @@ class cfgVehicles
 				{
 					condition = "hasDeployedHook";
 					positionType = "coordinates";
-					position[] = {0.0136251,4.71973,-1.14};
-					label = "Move Hoist Crew - Helicopter";
-					radius = 0.1;
+					position[] = {-0.172121,4.7478,-1.11884};
+					label = "Move Hoist Occupants To Helicopter";
+					radius = 0.2;
 					buttonDown = "[hook] call uscg_mod_fnc_moveInAllOccupants";
 				};
 				class openDoorCoPilot
@@ -136,9 +158,9 @@ class cfgVehicles
 					condition = "vxf_vehicle animationPhase ""Door_RB"" < 0.1";
 					positionType = "coordinates";
 					position[] = {0.592812,4.99083,-1.05436};
-					label = "Open Side Door";
+					label = "Open Side";
 					radius = 0.2;
-					buttonDown = "[vxf_vehicle] call uscg_jayhawk_fnc_sideDoor";
+					buttonDown = "[vxf_vehicle, false] call uscg_jayhawk_fnc_sideDoor";
 				};
 				class closeSideDoorPilot
 				{
@@ -146,24 +168,24 @@ class cfgVehicles
 					condition = "vxf_vehicle animationPhase ""Door_RB"" > 0.1";
 					positionType = "coordinates";
 					position[] = {0.592812,4.99083,-1.05436};
-					label = "Close Side Door";
+					label = "Close Side";
 					radius = 0.2;
-					buttonDown = "[vxf_vehicle] call uscg_jayhawk_fnc_sideDoor";
+					buttonDown = "[vxf_vehicle, false] call uscg_jayhawk_fnc_sideDoor";
 				};
 				class transferBasketHelicopter
 				{
 					condition = "hasDeployedHook";
 					positionType = "coordinates";
-					position[] = {0.0136251,4.71973,-1.14};
-					label = "Move Hoist Crew - Helicopter";
-					radius = 0.1;
+					position[] = {0.148563,4.74821,-1.11985};
+					label = "Move Hoist Occupants To Helicopter";
+					radius = 0.2;
 					buttonDown = "[hook] call uscg_mod_fnc_moveInAllOccupants";
 				};
 				class setLengthPilot
 				{
 					condition = "hasDeployedHook";
 					positionType = "coordinates";
-					position[] = {0.733901,5.28162,-0.954426};
+					position[] = {0.136798,5.01951,-1.09132};
 					label = "Set Rope Length";
 					radius = 0.2;
 					buttonDown = " createDialog 'uscg_RopeMeter' ";
@@ -173,8 +195,8 @@ class cfgVehicles
 					clickSound = "vxf_Switch_Sound";
 					condition = "hasDeployedHook";
 					positionType = "coordinates";
-					position[] = {-0.0120684,5.23913,-1.05607};
-					label = "Read Rescue Hoist Data";
+					position[] = {0.173493,5.12669,-1.08938};
+					label = "Read Hoist Data";
 					radius = 0.2;
 					buttonDown = "[player] call uscg_mod_fnc_getDataReadings";
 				};
@@ -231,11 +253,11 @@ class cfgVehicles
 					position[] = {0.0204315,4.4066,-1.16562};
 					label = "Move Into Cockpit";
 					radius = 0.1;
-					buttonDown = "player setPos getPos vxf_vehicle, player moveInTurret [vxf_vehicle, [0]]";
+					buttonDown = "player action ['moveToTurret', vxf_vehicle, [0]]";
 				};
 				class transferToCargo
 				{
-					condition = "([vxf_vehicle] call uscg_jayhawk_fnc_canCloseDoor == false) && vxf_vehicle doorPhase ""door_RB"" > 0.5";
+					condition = "([vxf_vehicle] call uscg_jayhawk_fnc_canCloseDoor == false) && vxf_vehicle doorPhase ""door_RB"" > 0.5 && (vxf_vehicle emptyPositions 'cargo' != 0)";
 					positionType = "coordinates";
 					position[] = {0.616639,1.20687,-1.36537};
 					label = "Move Into Passenger Seat";
@@ -258,7 +280,16 @@ class cfgVehicles
 					position[] = {-0.589604,2.77339,-1.737};
 					label = "Deploy Stretcher";
 					radius = 0.3;
-					buttonDown = "[vxf_vehicle] call uscg_jayhawkrescue_fnc_deployStretcher, [vxf_vehicle, [""Door_RB"", 1]] remoteExec [""animateDoor""], vxf_vehicle animate ['stretcher', 1]";
+					buttonDown = "[vxf_vehicle] call uscg_jayhawkrescue_fnc_deployStretcher, vxf_vehicle animate ['stretcher', 1]";
+				};
+				class deployBasket
+				{
+					condition = "([vxf_vehicle] call uscg_jayhawkrescue_fnc_hasBasket == true) && {!hasDeployedHook}";
+					positionType = "coordinates";
+					position[] = {0.525706,2.8762,-1.04493};
+					label = "Deploy Basket";
+					radius = 0.3;
+					buttonDown = "[vxf_vehicle] call uscg_jayhawkrescue_fnc_deployBasket, vxf_vehicle animate ['Basket', 1]";
 				};
 				class getOutDiver
 				{
@@ -268,15 +299,6 @@ class cfgVehicles
 					label = "Jump Into Water";
 					radius = 0.2;
 					buttonDown = "call mst_fnc_handleEject, player action ['Eject', vxf_vehicle];";
-				};
-				class deployBasket
-				{
-					condition = "([vxf_vehicle] call uscg_jayhawkrescue_fnc_hasBasket == true) && {!hasDeployedHook}";
-					positionType = "coordinates";
-					position[] = {0.525706,2.8762,-1.04493};
-					label = "Deploy Basket";
-					radius = 0.3;
-					buttonDown = "[vxf_vehicle] call uscg_jayhawkrescue_fnc_deployBasket, [vxf_vehicle, [""Door_RB"", 1]] remoteExec [""animateDoor""], vxf_vehicle animate ['Basket', 1]";
 				};
 				class Door_RB 
 				{
@@ -289,7 +311,7 @@ class cfgVehicles
 					animStates[] = {0, 1};
 					animLabels[] = {"Closed", "Open"};
 					animEnd="";
-					animStart = "[vxf_vehicle] call uscg_jayhawk_fnc_sideDoor";
+					animStart = "[vxf_vehicle, false] call uscg_jayhawk_fnc_sideDoor";
 					radius=0.3;
 					animSpeed=1;
 				};

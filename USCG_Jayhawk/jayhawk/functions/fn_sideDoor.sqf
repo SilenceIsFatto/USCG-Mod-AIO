@@ -9,9 +9,9 @@
 */
 
 
-params ["_vehicle"];
+params ["_vehicle", "_deployed"];
 
-if ( [_vehicle] call uscg_jayhawk_fnc_canCloseDoor ) then {
+if ([_vehicle] call uscg_jayhawk_fnc_canCloseDoor && !_deployed) then {
 
 	if (_vehicle doorPhase "door_RB" < 0.9) then {
 		[_vehicle, ["Door_RB", 1]] remoteExec ["animateDoor"];
@@ -23,4 +23,9 @@ if ( [_vehicle] call uscg_jayhawk_fnc_canCloseDoor ) then {
 		for "_i" from 0 to 7 do {[_vehicle, [_i, true]] remoteExec ["lockCargo"]};
 	};
 
+} else {
+	if (_deployed) then {
+		[_vehicle, ["Door_RB", 1]] remoteExec ["animateDoor"];
+		for "_i" from 0 to 7 do {[_vehicle, [_i, false]] remoteExec ["lockCargo"]};
+	};
 };

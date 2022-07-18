@@ -19,6 +19,7 @@
 				gunnerRightHandAnimName="back_stick";
 				gunnerRightLegAnimName="pedalR";
 				gunnerLeftLegAnimName="pedalL";
+				gunnerCompartments="Compartment2";
 				proxyIndex=1;
 				commanding=-1;
 				body="Spotlight_Spin";
@@ -121,7 +122,7 @@
 			{
 				gunnerAction="passenger_bench_1";
 				gunnerInAction = "passenger_bench_1";
-				gunnerCompartments="";
+				gunnerCompartments="Compartment1";
 				preciseGetInOut=0;
 				canHideGunner = -1;
 				hasGunner = true;
@@ -140,11 +141,11 @@
 				gunnerName="Gunner (Side)";
 				dontCreateAI = true;
 				proxyIndex=7;
-				maxElev=90;
+				maxElev=70;
 				minElev=-80;
-				maxTurn=80;
-				minTurn=-80;
-				showAsCargo = false;
+				maxTurn=70;
+				minTurn=-70;
+				showAsCargo = true;
 				ejectDeadGunner=true;
 				memoryPointGunnerOptics="eye";
 				class dynamicViewLimits
